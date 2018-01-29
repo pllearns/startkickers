@@ -4,7 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "mocha"
+    "test": "mocha",
+    "deploy": "node ethereum/deploy.js",
+    "compile": "node ethereum/compile.js"
   },
   "author": "Phil Lorenzo",
   "license": "MIT",
