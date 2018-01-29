@@ -6,7 +6,8 @@
   "scripts": {
     "test": "mocha",
     "deploy": "node ethereum/deploy.js",
-    "compile": "node ethereum/compile.js"
+    "compile": "node ethereum/compile.js",
+    "dev": "next dev"
   },
   "author": "Phil Lorenzo",
   "license": "MIT",
@@ -14,6 +15,9 @@
     "fs-extra": "^5.0.0",
     "ganache-cli": "^6.0.3",
     "mocha": "^5.0.0",
+    "next": "^4.1.4",
+    "react": "^16.2.0",
+    "react-dom": "^16.2.0",
     "solc": "^0.4.19",
     "truffle-hdwallet-provider": "0.0.3",
     "web3": "^1.0.0-beta.29"
