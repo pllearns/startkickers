@@ -19,6 +19,7 @@ beforeEach(async () => {
   factory = await new web3.eth.Contract(JSON.parse(compiledFactory.interface))
     .deploy({ data: compiledFactory.bytecode })
     .send({ from: accounts[0], gas: '1000000' });
+    factory.setProvider(provider);
 
   await factory.methods.createCampaign('100')
     .send({
@@ -33,3 +34,10 @@ beforeEach(async () => {
     campaignAddress
   );
 });
+
+describe('campaigns', () => {
+  it('deploys a factory and a campaign', () => {
+    assert.ok(factory.options.address);
+    assert.ok(campaign.options.address);
+  })
+})
