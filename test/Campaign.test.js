@@ -35,6 +35,7 @@ beforeEach(async () => {
   );
 });
 
+
 describe('campaigns', () => {
   it('deploys a factory and a campaign', () => {
     assert.ok(factory.options.address);
@@ -52,8 +53,8 @@ describe('campaigns', () => {
       value: '200',
       from: accounts[1]
     });
-    const approver = await campaign.methods.approvers(accounts[1]).call();
-    assert(approver);
+    const isContributor = await campaign.methods.approvers(accounts[1]).call();
+    assert(isContributor);
   });
 
   it('requires a minimum contribution', async () => {
@@ -69,13 +70,14 @@ describe('campaigns', () => {
   });
 
   it('allows a manager to make a payment request', async () => {
-    await campaign.methods.createRequest('Get guitars', '3000', accounts[1])
+    await campaign.methods
+      .createRequest('Buy batteries', '100', accounts[1])
       .send({
         from: accounts[0],
         gas: '1000000'
       });
-      const request = await campaign.methods.requests(0).call();
-    
-      assert.equal('3000', request.value);
+    const request = await campaign.methods.requests(0).call();
+
+    assert.equal('Buy batteries', request.description);
   });
 });
