@@ -39,5 +39,32 @@ describe('campaigns', () => {
   it('deploys a factory and a campaign', () => {
     assert.ok(factory.options.address);
     assert.ok(campaign.options.address);
-  })
-})
+  });
+
+  it('marks the caller as the manager', async () => {
+    const manager = await campaign.methods.manager().call();
+
+    assert.equal(accounts[0], manager);
+  });
+
+  it('allows contributors and marks as approvers', async () => {
+    await campaign.methods.contribute().send({
+      value: '200',
+      from: accounts[1]
+    });
+    const approver = await campaign.methods.approvers(accounts[1]).call();
+    assert(approver);
+  });
+
+  it('requires a minimum contribution', async () => {
+    try {
+      await campaign.methods.contribute().send({
+        from: accounts[1],
+        value: '5'
+      });
+      assert(false);
+    } catch (err){
+      assert(err);
+    }
+  });
+});
