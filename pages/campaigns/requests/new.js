@@ -45,6 +45,13 @@ class RequestNew extends Component {
   render() {
     return (
       <Layout>
+        <Link route={`/campaigns/${this.props.address}/requests`}>
+          <a>
+            <Button primary>
+              Back
+            </Button>
+          </a>
+        </Link>
         <h3>Make a Request</h3>
         <Form onSubmit={this.onSubmit} error={!!this.state.errMessage}>
           <Form.Field>
@@ -68,6 +75,7 @@ class RequestNew extends Component {
               onChange={event => this.setState({recipient: event.target.value})} 
             />
           </Form.Field>
+          <Message error content={this.state.errMessage}/>
           <Button primary loading={this.state.loading}>Make Request</Button>
         </Form>
       </Layout>
