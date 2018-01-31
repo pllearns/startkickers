@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Layout from '../../components/Layout';
 import Campaign from '../../ethereum/campaign';
 import { Card } from 'semantic-ui-react';
+import web3 from '../../ethereum/web3';
 
 
 class CampaignShow extends Component {
@@ -37,8 +38,8 @@ class CampaignShow extends Component {
         style: {overflowWrap: 'break-word'}
       },
       {
-        header: balance,
-        meta: 'balance of the campaign',
+        header: web3.utils.fromWei(balance, 'ether'),
+        meta: 'balance of the campaign (ether)',
         description: 'balance left for requests',
         style: {overflowWrap: 'break-word'}
       },
