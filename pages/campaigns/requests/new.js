@@ -39,7 +39,12 @@ class RequestNew extends Component {
       this.setState({errMessage: err.message})
     }
 
-    this.setState({ loading: false })
+    this.setState({ 
+      value: '',
+      description: '',
+      recipient: '',
+      loading: false 
+    })
   }
 
   render() {
