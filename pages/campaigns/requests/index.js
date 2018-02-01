@@ -18,7 +18,6 @@ class RequestIndex extends Component {
         return campaign.methods.requests(index).call();
       })
     );
-    console.log(requests);
 
     return { address, requests, requestCount, approversCount }
   }
