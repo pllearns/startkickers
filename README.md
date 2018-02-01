@@ -11,6 +11,28 @@ npm test
 npm run deploy
 ```
 
+After we deploy our contract, make sure to copy the address from the terminal, and then go into the `factory.js` file, and update the interface helper: 
+
+``` js
+import web3 from './web3';
+import CampaignFactory from './build/CampaignFactory.json';
+
+const instance = new web3.eth.Contract(
+  JSON.parse(CampaignFactory.interface),
+  '0x66Abf9dF2F41dD91eD6447e093DEbA64937871f1' // this is where the address is placed after deploying the factory contract
+);
+
+export default instance;
+```
+
+then go ahead and run in development: 
+
+``` bash
+
+npm run dev
+
+```
+
 
 ## Built With
 
