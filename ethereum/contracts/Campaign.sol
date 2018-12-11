@@ -1,4 +1,4 @@
-pragma solidity ^0.4.17;
+pragma solidity >=0.4.0 <0.6.0;
 
 contract CampaignFactory {
     address[] public deployedCampaigns;
@@ -8,7 +8,7 @@ contract CampaignFactory {
         deployedCampaigns.push(newCampaign);
     }
 
-    function getDeployedCampaigns() public view returns (address[]) {
+    function getDeployedCampaigns() public view returns (address[] memory) {
         return deployedCampaigns;
     }
 }
@@ -34,7 +34,7 @@ contract Campaign {
         _;
     }
 
-    function Campaign(uint minimum, address creator) public {
+    constructor(uint minimum, address creator) public {
         manager = creator;
         minimumContribution = minimum;
     }
@@ -48,11 +48,11 @@ contract Campaign {
 
     function createRequest(string description, uint value, address recipient) public restricted {
         Request memory newRequest = Request({
-           description: description,
-           value: value,
-           recipient: recipient,
-           complete: false,
-           approvalCount: 0
+            description: description,
+            value: value,
+            recipient: recipient,
+            complete: false,
+            approvalCount: 0
         });
 
         requests.push(newRequest);
