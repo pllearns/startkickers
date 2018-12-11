@@ -38,8 +38,6 @@ npm run dev
 
 ## Structure
 
----
-
 Find the contract in `ethereum/contracts`
 
 FInd the test in `test/Campaign.test.js`
